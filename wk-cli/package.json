@@ -1,33 +1,38 @@
 {
-  "name": "wk-cli",
+  "name": "wk-webpack-cli",
   "version": "0.0.1",
   "description": "",
-  "bin": "./bin/cli.js",
+  "bin": {
+    "wk-cli": "./bin/cli.js"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node ./util/hook.js"
   },
   "keywords": [],
   "author": "wangkun",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "autoprefixer": "^10.0.1",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^5.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.0",
-    "mini-css-extract-plugin": "^1.2.1",
-    "postcss-flexbugs-fixes": "^5.0.0",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.3.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.3.0",
-    "wepack-cli": "^0.0.1-security"
-  },
   "dependencies": {
-    "@babel/runtime": "^7.12.1"
+    "@babel/runtime": "7.11.2",
+    "@babel/core": "7.11.1",
+    "@babel/plugin-transform-runtime": "7.11.0",
+    "@babel/preset-env": "7.11.0",
+    "autoprefixer": "9.6.0",
+    "babel-loader": "8.1.0",
+    "css-loader": "4.2.1",
+    "file-loader": "6.0.0",
+    "html-webpack-plugin": "4.3.0",
+    "mini-css-extract-plugin": "0.10.0",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "url-loader": "4.1.1",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kings007/np.git"
   }
 }
