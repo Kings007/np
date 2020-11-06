@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
-        inclue: /src/,
+        include: /src/,
         use: {
           loader: 'url-loader',
           options: {
@@ -56,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: path.join(cwd, './index.html'),
+      template: path.join(cwd, './public/index.html'),
       filename: 'index.html'
     })
   ]

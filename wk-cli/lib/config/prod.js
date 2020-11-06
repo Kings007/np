@@ -1,5 +1,4 @@
-const {merge} = require('webpack-merge')
-const { module } = require('./base')
+const { merge } = require('webpack-merge')
 const baseConfig = require('./base')
 
 const devConfig = {

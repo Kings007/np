@@ -64,7 +64,7 @@ const cssLoaders = function (options) {
   }
 }
 
-module.exports.styleLoaders = function (options) {
+module.exports = function (options) {
   const output = [];
   const loaders = cssLoaders(options);
 

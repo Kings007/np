@@ -16,10 +16,14 @@ function createHTMLTemplete() {
 
 function createSrcTemplete() {
   createDirectory('src', (dirPath) => {
-    const fileName = 'index.js'
+    const fileName = 'main.js'
     const filePath = path.resolve(dirPath, fileName)
-    console.log('index.js path: ', filePath)
-    fs.writeFile(filePath, 'console.log("hello world")', () => {})
+    console.log('main.js path: ', filePath)
+    fs.writeFile(filePath, '', () => {
+      const readStream = fs.createReadStream(path.join(__dirname, '../src/main.js'))
+      const writeStream = fs.createWriteStream(filePath)
+      readStream.pipe(writeStream)
+    })
   })
 }
 

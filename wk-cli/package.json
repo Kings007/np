@@ -8,7 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node ./util/hook.js"
+    "postinstall": "node ./util/hook.js",
+    "dev": "node ./bin/cli.js",
+    "build": "node ./bin/cli.js 'env=prod'"
   },
   "keywords": [],
   "author": "wangkun",

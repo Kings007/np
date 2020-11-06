@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const { merge } = require('webpack-merge')
+const {merge} = require('webpack-merge')
 
 const { cwd, env } = require('./util/util')
 const devConfig = require('./config/dev')
@@ -10,20 +10,25 @@ const prodConfig = require('./config/prod')
 
 exports.run = () => {
   let config = {}
-  const filePath = path.join(cwd, 'wk.config.js')
-  if (fs.statSync(filePath).isFile()) {
-    let userConfig = require(filePath)
-    if (typeof userConfig === 'function') {
-      config = userConfig()
+  try {
+    const filePath = path.join(cwd, 'wk.config.js')
+    if (fs.statSync(filePath).isFile()) {
+      let userConfig = require(filePath)
+      if (typeof userConfig === 'function') {
+        config = userConfig()
+      }
+      if (typeof userConfig === 'object') {
+        config = userConfig
+      }
     }
-    if (typeof userConfig === 'object') {
-      config = userConfig
+  } catch(e) {
+
+  } finally {
+    if (env() === 'dev') {
+      runServer(config)
+    } else {
+      runBuild(config)
     }
-  }
-  if (env() === 'dev') {
-    runServer(config)
-  } else {
-    runBuild(config)
   }
 }
 
@@ -31,7 +36,7 @@ function runServer(config) {
   config = merge(devConfig, config)
   const compiler = webpack(config)
   const { devServer = {} } = config
-  const server = new WebpackDevServer(compiler.config.devServer)
+  const server = new WebpackDevServer(compiler)
   const { port = 9000, host = 'localhost' } = devServer
   process.on('SIGINT', () => {
     server.close(() => {
